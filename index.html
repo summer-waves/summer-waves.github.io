@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marco Ortiz | My Portfolio Website</title>
+
+    <style>
+        :root {
+            /* Color Palette */
+            --bg-primary: #050607;          /* near‑black */
+            --bg-card:    #111217;          /* dark gray/charcoal */
+            --bg-warm:    #1a1408;          /* very dark warm tint */
+            --text-primary: #f5f5f5;
+            --accent-yellow: #f5c84c;       /* main yellow accent */
+            --neon-aqua:  #00ffc8;
+            --neon-purple:#bd00ff;
+        }
+    
+        /* 1. INITIAL SETUP */
+        html {
+            scroll-behavior: smooth;
+        }
+    
+        body {
+            font-family: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP",
+            "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            /* black + warm neutral background with subtle glow */
+            background:
+                radial-gradient(circle at top left,  rgba(40, 32, 12, 0.65), transparent 55%),
+                radial-gradient(circle at bottom right, rgba(18, 18, 18, 0.8), transparent 55%),
+                linear-gradient(135deg, #050607 0%, #111217 45%, #1a1408 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+    
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: fadeInPage 1.5s ease-out;
+        }
+    
+        /* 2. HEADER & TYPING ANIMATION */
+        header {
+            text-align: center;
+            padding: 80px 0 50px;
+            border-bottom: 1px solid #333;
+        }
+    
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+        }
+    
+        /* Typewriter effect for name */
+        .typewriter {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 5px solid var(--accent-yellow); /* cursor now yellow */
+            width: 0;
+            animation:
+                typing 2.5s steps(14, end) forwards,
+                cursor-blink 0.9s step-end infinite;
+        }
+    
+        @keyframes typing {
+            from { width: 0; }
+            to   { width: 14ch; }
+        }
+    
+        @keyframes cursor-blink {
+            0%, 100% { border-right-color: transparent; }
+            50%      { border-right-color: var(--accent-yellow); }
+        }
+    
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-yellow);
+            opacity: 0;
+            animation: slideUp 1s ease-out 1s forwards;
+        }
+    
+        /* 3. NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            opacity: 0;
+            animation: slideUp 1s ease-out 1.5s forwards;
+        }
+    
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            transition: color 0.3s;
+        }
+    
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-yellow);
+            transition: width 0.3s ease-in-out;
+        }
+    
+        nav a:hover {
+            color: var(--accent-yellow);
+        }
+    
+        nav a:hover::after {
+            width: 100%;
+        }
+    
+        /* 4. SECTIONS & CARDS */
+        section {
+            padding: 60px 0;
+            opacity: 0;
+            animation: slideUpSection 1s ease-out forwards;
+            animation-timeline: view();
+            animation-range: entry 10% cover 30%;
+        }
+    
+        @media (prefers-reduced-motion: no-preference) {
+            section {
+                animation: slideUp 0.8s ease-out forwards;
+            }
+            #about { animation-delay: 0.2s; }
+            #skills { animation-delay: 0.4s; }
+            #projects { animation-delay: 0.6s; }
+            #certs { animation-delay: 0.8s; }
+            #resume { animation-delay: 1s; }
+        }
+    
+        h2 {
+            border-left: 5px solid var(--accent-yellow);
+            padding-left: 15px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+    
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+    
+        /* UPDATED CARD BLOCK */
+        .card {
+            background: var(--bg-card);
+            padding: 25px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+    
+        /* Images inside cards */
+        .card img {
+            width: 70%;
+            max-width: 200px;
+            display: block;
+            margin: 0 auto 15px;
+            border-radius: 4px;
+        }
+    
+        /* Neon sweep effect on hover */
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(245, 200, 76, 0.12),
+                transparent
+            ); /* soft yellow sweep */
+            transition: 0.5s;
+        }
+    
+        .card:hover::before {
+            left: 100%;
+        }
+    
+        .card:hover {
+            border-color: var(--accent-yellow);
+            box-shadow: 0 0 20px rgba(245, 200, 76, 0.25);
+            transform: translateY(-8px);
+        }
+    
+        .card h3 {
+            color: var(--accent-yellow);
+            margin-top: 0;
+        }
+    
+        /* 5. SKILLS ICONS */
+        .icon-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+    
+        .tech-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .tech-icon img {
+            width: 60px;
+            height: auto;
+        }
+    
+        .tech-icon:hover {
+            transform: scale(1.05);
+        }
+    
+        /* 6. RESUME BUTTONS */
+        .resume-section {
+            background: #050607;
+            border-top: 2px solid var(--accent-yellow);
+            padding: 50px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 30px;
+            border: 1px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+            transition: 0.4s;
+            overflow: hidden;
+        }
+    
+        .btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--accent-yellow);
+            z-index: -1;
+            transition: 0.3s ease-in-out;
+        }
+    
+        .btn:hover {
+            color: #000;
+            box-shadow: 0 0 25px rgba(245, 200, 76, 0.6);
+        }
+    
+        .btn:hover::after {
+            width: 100%;
+        }
+    
+        /* 7. DEFINING THE ANIMATIONS (KEYFRAMES) */
+        @keyframes fadeInPage {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            nav { flex-direction: column; gap: 10px; }
+        }
+    </style>
+    </head>
+    <body>
+    
+
+    <div class="container">
+        <header>
+            <h1 class="typewriter">Marco Ortiz</h1>
+            <div class="subtitle">MS SDS Student</div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#resume">Resume & Connect</a>
+            </nav>
+        </header>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+               I am a versatile, data-driven student focusing on data analytics and machine learning to drive business operational insights. 
+                
+            </p>
+        </section>
+
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <p>Applications, Operating Systems, Programming Languages, & Scripting:</p>
+
+    <!-- <div class="icon-grid">
+        <div class="tech-icon"><img src="assets/images/ArcGIS-Pro.png" alt="ArcGIS Pro"></div>
+        <div class="tech-icon"><img src="assets/images/Autocad.png" alt="AUTOCAD"></div>
+        <div class="tech-icon"><img src="assets/images/Docker.png" alt="Docker"></div>
+        <div class="tech-icon"><img src="assets/images/GitLab.png" alt="GitLab"></div>
+        <div class="tech-icon"><img src="assets/images/Gradio.png" alt="Gradio"></div>
+        <div class="tech-icon"><img src="assets/images/Grafana.png" alt="Grafana"></div>
+        <div class="tech-icon"><img src="assets/images/Kubernetes.png" alt="Kubernetes"></div>
+        <div class="tech-icon"><img src="assets/images/MicrosoftOffice.png" alt="Microsoft Office"></div>
+        <div class="tech-icon"><img src="assets/images/Prometheus.png" alt="Prometheus"></div>
+        <div class="tech-icon"><img src="assets/images/QGIS.png" alt="QGIS"></div>
+        <div class="tech-icon"><img src="assets/images/ServiceNow.png" alt="ServiceNow"></div>
+        <div class="tech-icon"><img src="assets/images/SolidWorks-Logo.png" alt="SolidWorks"></div>
+        <div class="tech-icon"><img src="assets/images/StreamLit.png" alt="StreamLit"></div>
+        <div class="tech-icon"><img src="assets/images/Linux.png" alt="Linux"></div>
+        <div class="tech-icon"><img src="assets/images/MacOS.png" alt="MacOS"></div>
+        <div class="tech-icon"><img src="assets/images/windows.png" alt="Windows"></div>
+        <div class="tech-icon"><img src="assets/images/web-combo.png" alt="Web Combo"></div>
+        <div class="tech-icon"><img src="assets/images/python.png" alt="Python"></div>
+        <div class="tech-icon"><img src="assets/images/bash.png" alt="Bash"></div>
+        <div class="tech-icon"><img src="assets/images/powershell.png" alt="PowerShell"></div>
+    </div>
+</section> -->
+
+
+        
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="grid-container">
+
+                <article class="card">
+                    <h3>Spotify Song Features: Machine Learning and Deep Learning</h3>
+                    <p>This project predicts Spotify track popularity (0–100) using audio features provided by Spotify.</p>
+                <a class="card-link"
+                href="https://spotifysongfeaturesmlanddeeplearning-jsappudcn4wwalt5rz93tmo.streamlit.app/">
+                View Streamlit App &rarr;
+                </a>
+                </article>
+
+                <article class="card">
+                    <h3>Analyzing Transportation Trends Using Time Series Methods</h3>
+                    <p>Cleaned and modeled 10+ years of monthly transportation data in Python using pandas, statsmodels, and ARIMA techniques.</p>
+                    <a href="https://github.com/marcoortiz479/Analyzing_Transportation_Trends_Using_Time_Series_Methods_Python" style="color:white; text-decoration: underline;">View Code &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3>Analyzing Industry Carbon Emissions</h3>
+                    <p>This project aims to analyze carbon emissions across various industries using publicly available datasets.</p>
+                    <a href="https://github.com/marcoortiz479/Analyzing_Industry_Carbon_Emissions_PostgreSQL" style="color:white; text-decoration: underline;">View Code &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3>Flight Delay Visual Analysis and Predictions Across Airlines</h3>
+                    <p>Performed exploratory data analysis (EDA) on 336,000+ U.S. flights using R (dplyr, ggplot2) to uncover delay patterns by airline, time of day, and airport.</p>
+                    <a href="https://github.com/marcoortiz479/Flight_Delay_Visual_Analysis_and_Predictions_Across_Airlines_R" style="color:white; text-decoration: underline;">View Code &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3>HR Analytics Case Study</h3>
+                    <p>Used advanced SQL to query 1,450+ employee records and identify attrition drivers across departments and job roles. </p>
+                    <a href="https://github.com/marcoortiz479/HR_Analytics_Case_Study_Tableau_and_PostgreSQL" style="color:white; text-decoration: underline;">View Code &rarr;</a>
+                </article>
+
+
+            </div>
+        </section>
+
+
+        <section id="resume" class="resume-section">
+            <h2>Connect & Resume</h2>
+            <p>Feel free to reach out for collaborations or opportunities.</p>
+            <p><strong>Email: </strong> marcoortiz2@my.utsa.edu</p>
+
+            <div style="margin-top: 30px;">
+                <a href="https://www.linkedin.com/in/marco--ortiz" class="btn">LinkedIn</a>
+                <a href="https://github.com/summer-waves" class="btn">GitHub</a>
+            
+            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.6;">
+                &copy; 2025 Marco Ortiz
+            </p>
+        </section>
+
+    </div>
+
+</body>
+</html>
