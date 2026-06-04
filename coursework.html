@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coursework — Marco Ortiz</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.course-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2px;
+}
+.course-card {
+  border: 1px solid var(--border); background: var(--card-bg);
+  padding: 22px 28px;
+  font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text-dim);
+  letter-spacing: 0.06em; line-height: 1.5;
+  display: flex; align-items: center; gap: 14px;
+  transition: all 0.2s;
+}
+.course-card:hover { border-color: var(--gold); color: var(--text); background: rgba(240,180,41,0.04); }
+.course-card .course-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; opacity: 0.5; flex-shrink: 0; }
+.course-card:hover .course-dot { opacity: 1; }
+
+.edu-highlight {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 2px;
+}
+.edu-hl {
+  background: var(--card-bg); border: 1px solid var(--border);
+  padding: 32px 36px; transition: border-color 0.3s;
+  position: relative; overflow: hidden;
+}
+.edu-hl::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--cyan));
+  opacity: 0; transition: opacity 0.3s;
+}
+.edu-hl:hover { border-color: rgba(240,180,41,0.3); }
+.edu-hl:hover::before { opacity: 1; }
+.edu-hl .degree { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+.edu-hl .school { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--cyan); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+.edu-hl .meta { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--text-dim); }
+.edu-hl .gpa { color: var(--gold); font-size: 28px; font-family: 'Syne', sans-serif; font-weight: 800; margin-top: 16px; }
+.edu-hl .gpa-label { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
+
+@media (max-width: 700px) {
+  .edu-highlight { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<canvas id="neural-canvas"></canvas>
+<div class="grid-overlay"></div>
+<div class="scanlines"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">MO<span>.</span>DS</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="coursework.html">Coursework</a></li>
+    <li><a href="connect.html">Connect</a></li>
+  </ul>
+  <div class="status-dot"><div class="dot"></div>OPEN TO OPPORTUNITIES</div>
+</nav>
+
+<main>
+  <div class="page-banner fade-in">
+    <div class="eyebrow">04 / Coursework</div>
+    <h1>Education</h1>
+  </div>
+
+  <!-- Degree cards -->
+  <div class="page-section fade-in">
+    <span class="section-label">Degrees</span>
+    <h2 class="section-title">Academic Credentials</h2>
+    <div class="edu-highlight">
+      <div class="edu-hl">
+        <div class="degree">M.S. Statistics &amp; Data Science</div>
+        <div class="school">The University of Texas at San Antonio</div>
+        <div class="meta">August 2026 — San Antonio, TX</div>
+        <div class="gpa">3.58</div>
+        <div class="gpa-label">Grade Point Average</div>
+      </div>
+      <div class="edu-hl">
+        <div class="degree">B.A. Mathematics, Honors</div>
+        <div class="school">Texas A&amp;M International University</div>
+        <div class="meta">May 2024 — Laredo, TX</div>
+        <div class="gpa">3.82</div>
+        <div class="gpa-label">Grade Point Average</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Courses -->
+  <div class="page-section fade-in">
+    <span class="section-label">Graduate Coursework</span>
+    <h2 class="section-title">M.S. Curriculum — UTSA</h2>
+    <div class="course-grid">
+      <div class="course-card"><div class="course-dot"></div>Statistical Inference</div>
+      <div class="course-card"><div class="course-dot"></div>Applied Statistics</div>
+      <div class="course-card"><div class="course-dot"></div>Data Foundations / Machine Learning (Python)</div>
+      <div class="course-card"><div class="course-dot"></div>Exploratory Data Analysis (Python)</div>
+      <div class="course-card"><div class="course-dot"></div>Statistical Learning</div>
+      <div class="course-card"><div class="course-dot"></div>Categorical Data Analysis</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 — Marco Ortiz</p>
+  <p class="footer-right">MS Statistics &amp; Data Science · <span>UTSA</span></p>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

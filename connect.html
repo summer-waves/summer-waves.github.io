@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect — Marco Ortiz</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.connect-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+}
+.connect-info p {
+  font-size: 16px; line-height: 1.8; color: var(--text-dim); margin-bottom: 32px;
+}
+.contact-item {
+  border: 1px solid var(--border); background: var(--card-bg);
+  padding: 18px 24px; margin-bottom: 2px;
+  display: flex; align-items: center; gap: 16px;
+  transition: border-color 0.25s;
+}
+.contact-item:hover { border-color: rgba(0,212,255,0.3); }
+.contact-icon { font-size: 18px; width: 24px; text-align: center; }
+.contact-label { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 3px; }
+.contact-value { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--cyan); }
+.contact-value a { color: var(--cyan); text-decoration: none; }
+.contact-value a:hover { color: var(--gold); }
+
+.links-grid { display: grid; grid-template-columns: 1fr; gap: 2px; margin-top: 28px; }
+.social-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  padding: 24px 28px; text-decoration: none;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.25s; position: relative; overflow: hidden;
+}
+.social-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(240,180,41,0.06) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.social-card:hover { border-color: var(--gold); transform: translateX(4px); }
+.social-card:hover::before { opacity: 1; }
+.sc-left { display: flex; align-items: center; gap: 14px; }
+.sc-icon { font-size: 22px; }
+.sc-name { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); transition: color 0.2s; }
+.social-card:hover .sc-name { color: var(--gold); }
+.sc-handle { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.08em; }
+.sc-arrow { font-size: 20px; color: var(--text-dim); transition: transform 0.2s, color 0.2s; }
+.social-card:hover .sc-arrow { transform: translateX(5px); color: var(--gold); }
+
+/* availability box */
+.avail-box {
+  background: linear-gradient(135deg, rgba(0,255,157,0.05), rgba(0,212,255,0.05));
+  border: 1px solid rgba(0,255,157,0.2);
+  padding: 28px 32px; margin-top: 32px;
+}
+.avail-box .avail-title {
+  font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700;
+  color: var(--green); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.avail-box p { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
+
+@media (max-width: 900px) {
+  .connect-layout { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<canvas id="neural-canvas"></canvas>
+<div class="grid-overlay"></div>
+<div class="scanlines"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">MO<span>.</span>DS</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="coursework.html">Coursework</a></li>
+    <li><a href="connect.html">Connect</a></li>
+  </ul>
+  <div class="status-dot"><div class="dot"></div>OPEN TO OPPORTUNITIES</div>
+</nav>
+
+<main>
+  <div class="page-banner fade-in">
+    <div class="eyebrow">05 / Connect</div>
+    <h1>Let's Work Together</h1>
+  </div>
+
+  <div class="page-section fade-in">
+    <div class="connect-layout">
+      <div class="connect-info">
+        <div class="terminal-line"><span class="prompt">$</span> ping marco.ortiz</div>
+        <p>Feel free to reach out for collaborations, full-time roles, internships, or just to talk data and tech. I am currently open to opportunities in data science, ML engineering, and analytics.</p>
+
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <div>
+            <div class="contact-label">Primary Email</div>
+            <div class="contact-value"><a href="mailto:marcoaortiz@protonmail.com">marcoaortiz@protonmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <div>
+            <div class="contact-label">University Email</div>
+            <div class="contact-value"><a href="mailto:marco.ortiz2@my.utsa.edu">marco.ortiz2@my.utsa.edu</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">(956) 645-9367</div>
+          </div>
+        </div>
+
+        <div class="avail-box">
+          <div class="avail-title"><div class="dot"></div> Currently Available</div>
+          <p>Open to full-time positions and internship opportunities in data science, machine learning, analytics engineering, and data infrastructure. Based in Laredo / San Antonio, TX. Remote-friendly.</p>
+        </div>
+      </div>
+
+      <div>
+        <span class="section-label" style="margin-bottom:16px;display:block">Social &amp; Professional</span>
+        <div class="links-grid">
+          <a href="https://linkedin.com/in/marco--ortiz" target="_blank" class="social-card">
+            <div class="sc-left">
+              <span class="sc-icon">💼</span>
+              <div>
+                <div class="sc-name">LinkedIn</div>
+                <div class="sc-handle">linkedin.com/in/marco--ortiz</div>
+              </div>
+            </div>
+            <span class="sc-arrow">→</span>
+          </a>
+          <a href="https://summer-waves.github.io" target="_blank" class="social-card">
+            <div class="sc-left">
+              <span class="sc-icon">🐙</span>
+              <div>
+                <div class="sc-name">GitHub</div>
+                <div class="sc-handle">summer-waves.github.io</div>
+              </div>
+            </div>
+            <span class="sc-arrow">→</span>
+          </a>
+        </div>
+
+        <div style="margin-top: 32px;">
+          <span class="section-label" style="margin-bottom:16px;display:block">Quick Actions</span>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="mailto:marcoaortiz@protonmail.com" class="btn-primary">Send Email →</a>
+            <a href="https://linkedin.com/in/marco--ortiz" target="_blank" class="btn-secondary">LinkedIn Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 — Marco Ortiz</p>
+  <p class="footer-right">MS Statistics &amp; Data Science · <span>UTSA</span></p>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

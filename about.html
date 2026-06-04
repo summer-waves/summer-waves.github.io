@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Marco Ortiz</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: start; }
+.about-text p { font-size: 15px; line-height: 1.85; color: var(--text-dim); margin-bottom: 18px; }
+.about-text p strong { color: var(--text); font-weight: 500; }
+
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 32px; }
+.stat-card {
+  background: var(--card-bg); border: 1px solid var(--border); padding: 24px 20px;
+  position: relative; overflow: hidden; transition: border-color 0.3s;
+}
+.stat-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.stat-card:hover { border-color: rgba(240,180,41,0.35); }
+.stat-card:hover::before { opacity: 1; }
+.stat-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 5px; }
+.stat-desc { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* Experience timeline */
+.timeline { display: flex; flex-direction: column; gap: 2px; }
+.tl-item {
+  background: var(--card-bg); border: 1px solid var(--border);
+  padding: 28px 32px; position: relative; overflow: hidden;
+  transition: border-color 0.3s;
+}
+.tl-item::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, var(--gold), var(--cyan));
+  opacity: 0; transition: opacity 0.3s;
+}
+.tl-item:hover { border-color: rgba(240,180,41,0.3); }
+.tl-item:hover::before { opacity: 1; }
+.tl-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; margin-bottom: 10px; flex-wrap: wrap; }
+.tl-role { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: var(--gold); }
+.tl-date { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--cyan); letter-spacing: 0.12em; white-space: nowrap; }
+.tl-org { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 14px; }
+.tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.tl-bullets li { font-size: 14px; line-height: 1.6; color: var(--text-dim); padding-left: 18px; position: relative; }
+.tl-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--gold); opacity: 0.6; font-size: 10px; top: 3px; }
+
+/* edu cards */
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.edu-card {
+  background: var(--card-bg); border: 1px solid var(--border); padding: 28px 32px;
+  transition: border-color 0.3s;
+}
+.edu-card:hover { border-color: rgba(0,212,255,0.3); }
+.edu-degree { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.edu-school { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--cyan); letter-spacing: 0.1em; margin-bottom: 10px; }
+.edu-meta { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--text-dim); letter-spacing: 0.08em; }
+.edu-gpa { color: var(--gold); }
+
+@media (max-width: 900px) {
+  .about-grid, .edu-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<canvas id="neural-canvas"></canvas>
+<div class="grid-overlay"></div>
+<div class="scanlines"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">MO<span>.</span>DS</a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="coursework.html">Coursework</a></li>
+    <li><a href="connect.html">Connect</a></li>
+  </ul>
+  <div class="status-dot"><div class="dot"></div>OPEN TO OPPORTUNITIES</div>
+</nav>
+
+<main>
+  <div class="page-banner fade-in">
+    <div class="eyebrow">01 / About</div>
+    <h1>Who I Am</h1>
+  </div>
+
+  <!-- About + stats -->
+  <div class="page-section fade-in">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="terminal-line"><span class="prompt">$</span> cat about.md</div>
+        <p>I am a <strong>data-driven graduate student</strong> pursuing an M.S. in Statistics and Data Science at UTSA, with a strong foundation in mathematics, applied statistics, and machine learning.</p>
+        <p>My work focuses on turning complex, real-world data into actionable insights through statistical modeling, exploratory analysis, and predictive analytics. I have hands-on experience building <strong>end-to-end data projects</strong> — from data acquisition and cleaning to model development, evaluation, and deployment — using tools such as Python, R, SQL, Power BI, Tableau, and Streamlit.</p>
+        <p>I have worked with structured and unstructured data across domains including <strong>human resources, supply chain, energy, social media, cybersecurity, and music analytics</strong>. I enjoy creating reproducible analyses and interactive visualizations that bridge the gap between technical rigor and practical decision-making.</p>
+        <p>Outside of data work, I build and maintain cloud infrastructure — including a <strong>self-hosted private cloud</strong> on AWS — and leverage generative AI tools to accelerate development workflows.</p>
+      </div>
+      <div>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-num">8+</div><div class="stat-desc">Major Projects</div></div>
+          <div class="stat-card"><div class="stat-num">99.98%</div><div class="stat-desc">Model Accuracy</div></div>
+          <div class="stat-card"><div class="stat-num">3.3M+</div><div class="stat-desc">Records Processed</div></div>
+          <div class="stat-card"><div class="stat-num">3.82</div><div class="stat-desc">Undergrad GPA</div></div>
+        </div>
+        <a href="connect.html" class="btn-primary" style="margin-top:8px">Get in Touch →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="page-section fade-in">
+    <span class="section-label">Education</span>
+    <h2 class="section-title">Academic Background</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">M.S. Statistics &amp; Data Science</div>
+        <div class="edu-school">The University of Texas at San Antonio</div>
+        <div class="edu-meta">August 2026 &nbsp;·&nbsp; <span class="edu-gpa">GPA: 3.58</span></div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">B.A. Mathematics, Honors</div>
+        <div class="edu-school">Texas A&amp;M International University</div>
+        <div class="edu-meta">May 2024 &nbsp;·&nbsp; <span class="edu-gpa">GPA: 3.82</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Experience -->
+  <div class="page-section fade-in">
+    <span class="section-label">Experience</span>
+    <h2 class="section-title">Relevant Work</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <div class="tl-role">Graduate Teaching Assistant I</div>
+          <div class="tl-date">SEP 2024 – MAY 2026</div>
+        </div>
+        <div class="tl-org">THE UNIVERSITY OF TEXAS AT SAN ANTONIO — San Antonio, TX</div>
+        <ul class="tl-bullets">
+          <li>Created Python and Excel dashboards to automate grading workflows and visualize performance insights, improving efficiency by 30%.</li>
+          <li>Held 8+ weekly office hours and provided tutoring to 30+ students weekly, covering R, Python, SAS, Tableau, and PostgreSQL.</li>
+          <li>Developed and enhanced 20+ course materials using Microsoft Office and R Markdown to support diverse learning styles.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <div class="tl-role">Optimization &amp; Data Analysis Intern</div>
+          <div class="tl-date">JUL 2024 – AUG 2024</div>
+        </div>
+        <div class="tl-org">TEXAS A&amp;M UNIVERSITY – KINGSVILLE — Kingsville, TX</div>
+        <ul class="tl-bullets">
+          <li>Spearheaded 20+ finite element simulations to optimize aerospace bracket designs, achieving a 69% reduction in mass while maintaining structural integrity.</li>
+          <li>Applied data-driven optimization techniques using Python and R to analyze stress data, validate mesh convergence, and back engineering decisions with reproducible metrics.</li>
+          <li>Validated mesh convergence using adaptive refinement methods (h-adaptive and p-adaptive), enhancing precision and computational efficiency.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <div class="tl-role">Academic Tutor</div>
+          <div class="tl-date">JAN 2022 – MAY 2024</div>
+        </div>
+        <div class="tl-org">TEXAS A&amp;M INTERNATIONAL UNIVERSITY — Laredo, TX</div>
+        <ul class="tl-bullets">
+          <li>Processed data from 300+ sessions via Excel to track student progress with 99% accuracy, supporting 50+ students weekly.</li>
+          <li>Tutored over 100 undergraduate students in mathematics, statistics, and programming, driving an estimated 15–20% average improvement in academic performance.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 — Marco Ortiz</p>
+  <p class="footer-right">MS Statistics &amp; Data Science · <span>UTSA</span></p>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>
