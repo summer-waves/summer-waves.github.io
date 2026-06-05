@@ -18,7 +18,7 @@
   display: flex; align-items: center; gap: 14px;
   transition: all 0.2s;
 }
-.course-card:hover { border-color: var(--gold); color: var(--text); background: rgba(240,180,41,0.04); }
+.course-card:hover { border-color: var(--text); color: var(--text); background: rgba(255,255,255,0.03); }
 .course-card .course-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; opacity: 0.5; flex-shrink: 0; }
 .course-card:hover .course-dot { opacity: 1; }
 
@@ -32,15 +32,15 @@
 }
 .edu-hl::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--cyan));
+  background: linear-gradient(90deg, var(--text), var(--cyan));
   opacity: 0; transition: opacity 0.3s;
 }
-.edu-hl:hover { border-color: rgba(240,180,41,0.3); }
+.edu-hl:hover { border-color: rgba(255,255,255,0.2); }
 .edu-hl:hover::before { opacity: 1; }
 .edu-hl .degree { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
 .edu-hl .school { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--cyan); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
 .edu-hl .meta { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--text-dim); }
-.edu-hl .gpa { color: var(--gold); font-size: 28px; font-family: 'Syne', sans-serif; font-weight: 800; margin-top: 16px; }
+.edu-hl .gpa { color: var(--text); font-size: 28px; font-family: 'Syne', sans-serif; font-weight: 800; margin-top: 16px; }
 .edu-hl .gpa-label { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
 
 @media (max-width: 700px) {
