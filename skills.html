@@ -29,18 +29,18 @@
 }
 .skill-pill .skill-icon { font-size: 16px; }
 .skill-pill:hover {
-  border-color: var(--gold); color: var(--gold);
+  border-color: var(--text); color: var(--text);
   transform: translateY(-3px);
-  background: rgba(240,180,41,0.05);
+  background: rgba(255,255,255,0.04);
 }
 
 /* proficiency bars */
 .prof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 48px; }
 .prof-item { display: flex; flex-direction: column; gap: 6px; }
 .prof-label { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; display: flex; justify-content: space-between; }
-.prof-label span { color: var(--gold); }
+.prof-label span { color: var(--text); }
 .prof-track { height: 3px; background: rgba(255,255,255,0.07); position: relative; overflow: hidden; }
-.prof-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--cyan)); width: 0; transition: width 1.2s cubic-bezier(0.22,1,0.36,1); }
+.prof-fill { height: 100%; background: linear-gradient(90deg, var(--text), var(--cyan)); width: 0; transition: width 1.2s cubic-bezier(0.22,1,0.36,1); }
 .prof-item.visible .prof-fill { width: var(--w); }
 
 @media (max-width: 700px) {
