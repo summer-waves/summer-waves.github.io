@@ -15,7 +15,7 @@ animRing();
 document.querySelectorAll('a, button, .card, .skill-pill, .stat-card, .project-card').forEach(el => {
   el.addEventListener('mouseenter', () => {
     ring.style.width = '56px'; ring.style.height = '56px';
-    ring.style.borderColor = 'rgba(240,180,41,0.6)';
+    ring.style.borderColor = 'rgba(255,255,255,0.5)';
   });
   el.addEventListener('mouseleave', () => {
     ring.style.width = '36px'; ring.style.height = '36px';
@@ -65,7 +65,7 @@ function drawNeural() {
     if (n.x < 0 || n.x > W) n.vx *= -1;
     if (n.y < 0 || n.y > H) n.vy *= -1;
   });
-  ctx.fillStyle = 'rgba(240,180,41,0.15)';
+  ctx.fillStyle = 'rgba(255,255,255,0.06)';
   for (let k = 0; k < 6; k++) {
     const t = (time * 0.3 + k * 0.4) % 1;
     ctx.beginPath(); ctx.arc(t * W, (k * 0.17 + 0.05) * H + Math.sin(time + k) * 30, 1.5, 0, Math.PI * 2); ctx.fill();
