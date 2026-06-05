@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marco Ortiz — Portfolio</title>
+<title>Marco Ortiz — Data Scientist</title>
 <link rel="stylesheet" href="style.css">
 <style>
 /* HOME-ONLY STYLES */
@@ -32,17 +32,7 @@
 }
 .hero-name .line { display: block; }
 .hero-name .first { color: var(--text); }
-.hero-name .last {
-  color: transparent; -webkit-text-stroke: 1px var(--gold); position: relative;
-}
-.hero-name .last::after {
-  content: attr(data-text); position: absolute; left: 0; top: 0;
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 50%, var(--cyan) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  clip-path: inset(0 100% 0 0);
-  animation: reveal-text 1.2s 1s cubic-bezier(0.77,0,0.18,1) forwards;
-}
-@keyframes reveal-text { to { clip-path: inset(0 0% 0 0); } }
+.hero-name .last { color: var(--gold); }
 
 .hero-tags {
   display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px;
@@ -140,7 +130,7 @@
     <div class="hero-eyebrow">MS Statistics &amp; Data Science — UTSA</div>
     <h1 class="hero-name">
       <span class="line first">Marco</span>
-      <span class="line last" data-text="Ortiz">Ortiz</span>
+      <span class="line last">Ortiz</span>
     </h1>
     <div class="hero-tags">
       <span class="hero-tag">Machine Learning</span>
