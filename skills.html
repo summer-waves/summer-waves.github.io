@@ -5,48 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Skills — Marco Ortiz</title>
 <link rel="stylesheet" href="style.css">
-<style>
-.skill-category { margin-bottom: 48px; }
-.cat-title {
-  font-family: 'Space Mono', monospace; font-size: 10px;
-  color: var(--cyan); letter-spacing: 0.18em; text-transform: uppercase;
-  margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
-}
-.cat-title::after { content: ''; flex: 1; height: 1px; background: rgba(0,212,255,0.12); }
-
-.skills-flex { display: flex; flex-wrap: wrap; gap: 10px; }
-
-.skill-pill {
-  border: 1px solid var(--border);
-  background: var(--card-bg);
-  padding: 12px 18px;
-  font-family: 'Space Mono', monospace;
-  font-size: 10px; color: var(--text-dim);
-  letter-spacing: 0.08em; text-transform: uppercase;
-  transition: all 0.25s; cursor: default;
-  display: flex; align-items: center; gap: 8px;
-  position: relative; overflow: hidden;
-}
-.skill-pill .skill-icon { font-size: 16px; }
-.skill-pill:hover {
-  border-color: var(--text); color: var(--text);
-  transform: translateY(-3px);
-  background: rgba(255,255,255,0.04);
-}
-
-/* proficiency bars */
-.prof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 48px; }
-.prof-item { display: flex; flex-direction: column; gap: 6px; }
-.prof-label { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; display: flex; justify-content: space-between; }
-.prof-label span { color: var(--text); }
-.prof-track { height: 3px; background: rgba(255,255,255,0.07); position: relative; overflow: hidden; }
-.prof-fill { height: 100%; background: linear-gradient(90deg, var(--text), var(--cyan)); width: 0; transition: width 1.2s cubic-bezier(0.22,1,0.36,1); }
-.prof-item.visible .prof-fill { width: var(--w); }
-
-@media (max-width: 700px) {
-  .prof-grid { grid-template-columns: 1fr; }
-}
-</style>
 </head>
 <body>
 <canvas id="neural-canvas"></canvas>
@@ -76,114 +34,182 @@
   <div class="page-section fade-in">
     <div class="terminal-line"><span class="prompt">$</span> list --skills --verbose</div>
 
-    <div class="skill-category">
-      <div class="cat-title">Business Intelligence &amp; Visualization</div>
-      <div class="skills-flex">
-        <div class="skill-pill"><span class="skill-icon">📊</span>Power BI</div>
-        <div class="skill-pill"><span class="skill-icon">⚙️</span>DAX</div>
-        <div class="skill-pill"><span class="skill-icon">🔄</span>Power Query</div>
-        <div class="skill-pill"><span class="skill-icon">🗺️</span>Azure Maps</div>
-        <div class="skill-pill"><span class="skill-icon">📈</span>Tableau</div>
-        <div class="skill-pill"><span class="skill-icon">📋</span>Excel Dashboards</div>
-        <div class="skill-pill"><span class="skill-icon">🟣</span>Plotly Dash</div>
-        <div class="skill-pill"><span class="skill-icon">📉</span>SSRS</div>
+    <div class="skills-section">
+      <div class="skills-category">BUSINESS INTELLIGENCE &amp; VISUALIZATION</div>
+      <div class="skills-grid">
+        <div class="skill-chip"><span class="skill-icon">📊</span>Power BI</div>
+        <div class="skill-chip"><span class="skill-icon">⚙️</span>DAX</div>
+        <div class="skill-chip"><span class="skill-icon">🔄</span>Power Query</div>
+        <div class="skill-chip"><span class="skill-icon">🗺️</span>Azure Maps</div>
+        <div class="skill-chip"><span class="skill-icon">📈</span>Tableau</div>
+        <div class="skill-chip"><span class="skill-icon">📋</span>Excel Dashboards</div>
+        <div class="skill-chip"><span class="skill-icon">🟣</span>Plotly Dash</div>
+        <div class="skill-chip"><span class="skill-icon">📉</span>SSRS</div>
       </div>
     </div>
 
-    <div class="skill-category">
-      <div class="cat-title">Programming &amp; Data Analysis</div>
-      <div class="skills-flex">
-        <div class="skill-pill"><span class="skill-icon">🐍</span>Python</div>
-        <div class="skill-pill"><span class="skill-icon">📊</span>R</div>
-        <div class="skill-pill"><span class="skill-icon">📐</span>SAS</div>
-        <div class="skill-pill"><span class="skill-icon">🌐</span>HTML / CSS</div>
-        <div class="skill-pill"><span class="skill-icon">⚡</span>JavaScript</div>
-        <div class="skill-pill"><span class="skill-icon">🖥️</span>PowerShell</div>
-        <div class="skill-pill"><span class="skill-icon">🐘</span>PHP</div>
-        <div class="skill-pill"><span class="skill-icon">🗄️</span>SQL</div>
+    <div class="skills-section">
+      <div class="skills-category">PROGRAMMING &amp; DATA ANALYSIS</div>
+      <div class="skills-grid">
+        <div class="skill-chip"><span class="skill-icon">🐍</span>Python</div>
+        <div class="skill-chip"><span class="skill-icon">📊</span>R</div>
+        <div class="skill-chip"><span class="skill-icon">📐</span>SAS</div>
+        <div class="skill-chip"><span class="skill-icon">🌐</span>HTML / CSS</div>
+        <div class="skill-chip"><span class="skill-icon">⚡</span>JavaScript</div>
+        <div class="skill-chip"><span class="skill-icon">🖥️</span>PowerShell</div>
+        <div class="skill-chip"><span class="skill-icon">🐘</span>PHP</div>
+        <div class="skill-chip"><span class="skill-icon">🗄️</span>SQL</div>
       </div>
     </div>
 
-    <div class="skill-category">
-      <div class="cat-title">Databases &amp; Data Platforms</div>
-      <div class="skills-flex">
-        <div class="skill-pill"><span class="skill-icon">🗃️</span>Microsoft SQL Server</div>
-        <div class="skill-pill"><span class="skill-icon">🔵</span>Google BigQuery</div>
-        <div class="skill-pill"><span class="skill-icon">❄️</span>Snowflake</div>
-        <div class="skill-pill"><span class="skill-icon">🐬</span>MariaDB</div>
-        <div class="skill-pill"><span class="skill-icon">🔴</span>Redis</div>
+    <div class="skills-section">
+      <div class="skills-category">MACHINE LEARNING &amp; AI</div>
+      <div class="skills-grid">
+        <div class="skill-chip"><span class="skill-icon">🤖</span>scikit-learn</div>
+        <div class="skill-chip"><span class="skill-icon">🔍</span>FAISS</div>
+        <div class="skill-chip"><span class="skill-icon">🔑</span>BM25</div>
+        <div class="skill-chip"><span class="skill-icon">🧠</span>XGBoost</div>
+        <div class="skill-chip"><span class="skill-icon">🌲</span>glmnet</div>
+        <div class="skill-chip"><span class="skill-icon">〰️</span>mgcv / GAM</div>
+        <div class="skill-chip"><span class="skill-icon">📐</span>lme4</div>
+        <div class="skill-chip"><span class="skill-icon">💀</span>lifelines</div>
+        <div class="skill-chip"><span class="skill-icon">⚕️</span>scikit-survival</div>
+        <div class="skill-chip"><span class="skill-icon">🔤</span>DistilBERT</div>
+        <div class="skill-chip"><span class="skill-icon">📝</span>TF-IDF</div>
       </div>
     </div>
 
-    <div class="skill-category">
-      <div class="cat-title">Data Engineering &amp; Cloud</div>
-      <div class="skills-flex">
-        <div class="skill-pill"><span class="skill-icon">☁️</span>AWS</div>
-        <div class="skill-pill"><span class="skill-icon">📦</span>Amazon S3</div>
-        <div class="skill-pill"><span class="skill-icon">🌊</span>Kinesis</div>
-        <div class="skill-pill"><span class="skill-icon">λ</span>Lambda</div>
-        <div class="skill-pill"><span class="skill-icon">🔧</span>Terraform</div>
-        <div class="skill-pill"><span class="skill-icon">❄️</span>Snowpipe</div>
-        <div class="skill-pill"><span class="skill-icon">🔬</span>Snowpark</div>
-        <div class="skill-pill"><span class="skill-icon">🏠</span>Nextcloud</div>
+    <div class="skills-section">
+      <div class="skills-category">DATABASES &amp; DATA PLATFORMS</div>
+      <div class="skills-grid">
+        <div class="skill-chip"><span class="skill-icon">🗃️</span>Microsoft SQL Server</div>
+        <div class="skill-chip"><span class="skill-icon">🔵</span>Google BigQuery</div>
+        <div class="skill-chip"><span class="skill-icon">❄️</span>Snowflake</div>
+        <div class="skill-chip"><span class="skill-icon">🐬</span>MariaDB</div>
+        <div class="skill-chip"><span class="skill-icon">🔴</span>Redis</div>
       </div>
     </div>
 
-    <div class="skill-category">
-      <div class="cat-title">Development &amp; DevOps Tools</div>
-      <div class="skills-flex">
-        <div class="skill-pill"><span class="skill-icon">📓</span>Jupyter Lab</div>
-        <div class="skill-pill"><span class="skill-icon">🔬</span>RStudio</div>
-        <div class="skill-pill"><span class="skill-icon">💻</span>VS Code</div>
-        <div class="skill-pill"><span class="skill-icon">🔷</span>SAS Viya</div>
-        <div class="skill-pill"><span class="skill-icon">🐙</span>GitHub / Git</div>
-        <div class="skill-pill"><span class="skill-icon">🐧</span>Linux / Unix</div>
-        <div class="skill-pill"><span class="skill-icon">🌀</span>Google Colab</div>
-        <div class="skill-pill"><span class="skill-icon">🔒</span>Nginx</div>
-        <div class="skill-pill"><span class="skill-icon">🔗</span>Tailscale</div>
-        <div class="skill-pill"><span class="skill-icon">🟠</span>Ubuntu</div>
-        <div class="skill-pill"><span class="skill-icon">📋</span>Jira</div>
+    <div class="skills-section">
+      <div class="skills-category">DATA ENGINEERING &amp; CLOUD</div>
+      <div class="skills-grid">
+        <div class="skill-chip"><span class="skill-icon">☁️</span>AWS</div>
+        <div class="skill-chip"><span class="skill-icon">📦</span>Amazon S3</div>
+        <div class="skill-chip"><span class="skill-icon">🌊</span>Kinesis</div>
+        <div class="skill-chip"><span class="skill-icon">λ</span>Lambda</div>
+        <div class="skill-chip"><span class="skill-icon">🔧</span>Terraform</div>
+        <div class="skill-chip"><span class="skill-icon">❄️</span>Snowpipe</div>
+        <div class="skill-chip"><span class="skill-icon">🔬</span>Snowpark</div>
+        <div class="skill-chip"><span class="skill-icon">🏠</span>Nextcloud</div>
       </div>
     </div>
 
-    <div class="skill-category">
-      <div class="cat-title">Generative AI &amp; LLM Tools</div>
-      <div class="skills-flex">
-        <div class="skill-pill"><span class="skill-icon">🤖</span>OpenAI</div>
-        <div class="skill-pill"><span class="skill-icon">🧠</span>Anthropic / Claude</div>
-        <div class="skill-pill"><span class="skill-icon">✨</span>Google Gemini</div>
-        <div class="skill-pill"><span class="skill-icon">🔍</span>Perplexity AI</div>
-        <div class="skill-pill"><span class="skill-icon">📝</span>Notion AI</div>
-        <div class="skill-pill"><span class="skill-icon">⚡</span>Cursor AI</div>
+    <div class="skills-section">
+      <div class="skills-category">DEVELOPMENT &amp; DEVOPS TOOLS</div>
+      <div class="skills-grid">
+        <div class="skill-chip"><span class="skill-icon">📓</span>Jupyter Lab</div>
+        <div class="skill-chip"><span class="skill-icon">🔬</span>RStudio</div>
+        <div class="skill-chip"><span class="skill-icon">💻</span>VS Code</div>
+        <div class="skill-chip"><span class="skill-icon">🔷</span>SAS Viya</div>
+        <div class="skill-chip"><span class="skill-icon">🐙</span>GitHub / Git</div>
+        <div class="skill-chip"><span class="skill-icon">🐧</span>Linux / Unix</div>
+        <div class="skill-chip"><span class="skill-icon">🌀</span>Google Colab</div>
+        <div class="skill-chip"><span class="skill-icon">🔒</span>Nginx</div>
+        <div class="skill-chip"><span class="skill-icon">🔗</span>Tailscale</div>
+        <div class="skill-chip"><span class="skill-icon">🟠</span>Ubuntu</div>
+        <div class="skill-chip"><span class="skill-icon">🚀</span>FastAPI</div>
+        <div class="skill-chip"><span class="skill-icon">🐳</span>Docker</div>
+        <div class="skill-chip"><span class="skill-icon">📋</span>Jira</div>
       </div>
     </div>
 
-    <div class="skill-category">
-      <div class="cat-title">Productivity &amp; Collaboration</div>
-      <div class="skills-flex">
-        <div class="skill-pill"><span class="skill-icon">📗</span>Microsoft Office</div>
-        <div class="skill-pill"><span class="skill-icon">📊</span>Advanced Excel</div>
-        <div class="skill-pill"><span class="skill-icon">🔵</span>Google Workspace</div>
-        <div class="skill-pill"><span class="skill-icon">📋</span>R Markdown</div>
+    <div class="skills-section">
+      <div class="skills-category">GENERATIVE AI &amp; LLM TOOLS</div>
+      <div class="skills-grid">
+        <div class="skill-chip"><span class="skill-icon">🤖</span>OpenAI</div>
+        <div class="skill-chip"><span class="skill-icon">🧠</span>Anthropic / Claude</div>
+        <div class="skill-chip"><span class="skill-icon">✨</span>Google Gemini</div>
+        <div class="skill-chip"><span class="skill-icon">🔍</span>Perplexity AI</div>
+        <div class="skill-chip"><span class="skill-icon">📝</span>Notion AI</div>
+        <div class="skill-chip"><span class="skill-icon">⚡</span>Cursor AI</div>
       </div>
     </div>
+
+    <div class="skills-section">
+      <div class="skills-category">PRODUCTIVITY &amp; COLLABORATION</div>
+      <div class="skills-grid">
+        <div class="skill-chip"><span class="skill-icon">📗</span>Microsoft Office</div>
+        <div class="skill-chip"><span class="skill-icon">📊</span>Advanced Excel</div>
+        <div class="skill-chip"><span class="skill-icon">🔵</span>Google Workspace</div>
+        <div class="skill-chip"><span class="skill-icon">📋</span>R Markdown</div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Proficiency bars -->
   <div class="page-section fade-in">
-    <span class="section-label">Core Proficiencies</span>
+    <div class="section-label">CORE PROFICIENCIES</div>
     <h2 class="section-title">Language &amp; Tool Depth</h2>
-    <div class="prof-grid">
-      <div class="prof-item fade-in"><div class="prof-label">Python <span>Expert</span></div><div class="prof-track"><div class="prof-fill" style="--w:95%"></div></div></div>
-      <div class="prof-item fade-in"><div class="prof-label">SQL <span>Expert</span></div><div class="prof-track"><div class="prof-fill" style="--w:92%"></div></div></div>
-      <div class="prof-item fade-in"><div class="prof-label">R <span>Advanced</span></div><div class="prof-track"><div class="prof-fill" style="--w:85%"></div></div></div>
-      <div class="prof-item fade-in"><div class="prof-label">Power BI / Tableau <span>Advanced</span></div><div class="prof-track"><div class="prof-fill" style="--w:88%"></div></div></div>
-      <div class="prof-item fade-in"><div class="prof-label">AWS <span>Intermediate</span></div><div class="prof-track"><div class="prof-fill" style="--w:75%"></div></div></div>
-      <div class="prof-item fade-in"><div class="prof-label">Snowflake <span>Intermediate</span></div><div class="prof-track"><div class="prof-fill" style="--w:72%"></div></div></div>
-      <div class="prof-item fade-in"><div class="prof-label">Machine Learning <span>Advanced</span></div><div class="prof-track"><div class="prof-fill" style="--w:87%"></div></div></div>
-      <div class="prof-item fade-in"><div class="prof-label">SAS <span>Intermediate</span></div><div class="prof-track"><div class="prof-fill" style="--w:70%"></div></div></div>
+    <div class="proficiency-grid">
+      <div class="proficiency-item">
+        <div class="proficiency-header">
+          <span class="proficiency-name">PYTHON</span>
+          <span class="proficiency-level">EXPERT</span>
+        </div>
+        <div class="proficiency-bar"><div class="proficiency-fill" style="width:96%"></div></div>
+      </div>
+      <div class="proficiency-item">
+        <div class="proficiency-header">
+          <span class="proficiency-name">SQL</span>
+          <span class="proficiency-level">EXPERT</span>
+        </div>
+        <div class="proficiency-bar"><div class="proficiency-fill" style="width:95%"></div></div>
+      </div>
+      <div class="proficiency-item">
+        <div class="proficiency-header">
+          <span class="proficiency-name">R</span>
+          <span class="proficiency-level">ADVANCED</span>
+        </div>
+        <div class="proficiency-bar"><div class="proficiency-fill" style="width:82%"></div></div>
+      </div>
+      <div class="proficiency-item">
+        <div class="proficiency-header">
+          <span class="proficiency-name">POWER BI / TABLEAU</span>
+          <span class="proficiency-level">ADVANCED</span>
+        </div>
+        <div class="proficiency-bar"><div class="proficiency-fill" style="width:80%"></div></div>
+      </div>
+      <div class="proficiency-item">
+        <div class="proficiency-header">
+          <span class="proficiency-name">AWS</span>
+          <span class="proficiency-level">INTERMEDIATE</span>
+        </div>
+        <div class="proficiency-bar"><div class="proficiency-fill" style="width:60%"></div></div>
+      </div>
+      <div class="proficiency-item">
+        <div class="proficiency-header">
+          <span class="proficiency-name">SNOWFLAKE</span>
+          <span class="proficiency-level">INTERMEDIATE</span>
+        </div>
+        <div class="proficiency-bar"><div class="proficiency-fill" style="width:58%"></div></div>
+      </div>
+      <div class="proficiency-item">
+        <div class="proficiency-header">
+          <span class="proficiency-name">MACHINE LEARNING</span>
+          <span class="proficiency-level">ADVANCED</span>
+        </div>
+        <div class="proficiency-bar"><div class="proficiency-fill" style="width:84%"></div></div>
+      </div>
+      <div class="proficiency-item">
+        <div class="proficiency-header">
+          <span class="proficiency-name">SAS</span>
+          <span class="proficiency-level">INTERMEDIATE</span>
+        </div>
+        <div class="proficiency-bar"><div class="proficiency-fill" style="width:55%"></div></div>
+      </div>
     </div>
   </div>
+
 </main>
 
 <footer>
@@ -191,13 +217,5 @@
   <p class="footer-right">MS Statistics &amp; Data Science · <span>UTSA</span></p>
 </footer>
 <script src="shared.js"></script>
-<script>
-// Trigger bar animations on scroll
-document.querySelectorAll('.prof-item').forEach(el => {
-  new IntersectionObserver(([e]) => {
-    if (e.isIntersecting) el.classList.add('visible');
-  }, { threshold: 0.3 }).observe(el);
-});
-</script>
 </body>
 </html>
