@@ -5,6 +5,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Skills — Marco Ortiz</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* ── Skill bar layout ── */
+.skills-section {
+  margin-bottom: 48px;
+}
+.skills-category {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: rgba(0,212,255,0.45);
+  letter-spacing: 0.18em;
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0,212,255,0.1);
+}
+.skill-bars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 48px;
+}
+.skill-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.skill-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.skill-bar-name {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--text);
+  letter-spacing: 0.08em;
+}
+.skill-bar-pct {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: rgba(0,212,255,0.5);
+  letter-spacing: 0.06em;
+}
+.skill-bar-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  position: relative;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0,212,255,0.5), rgba(0,212,255,0.9));
+  position: relative;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0;
+  width: 3px; height: 100%;
+  background: #00d4ff;
+  box-shadow: 0 0 6px #00d4ff;
+}
+
+/* Animate on load */
+@keyframes barGrow {
+  from { width: 0 !important; }
+}
+.skill-bar-fill {
+  animation: barGrow 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Stagger delays per item */
+.skill-bar-item:nth-child(1)  .skill-bar-fill { animation-delay: 0.05s; }
+.skill-bar-item:nth-child(2)  .skill-bar-fill { animation-delay: 0.10s; }
+.skill-bar-item:nth-child(3)  .skill-bar-fill { animation-delay: 0.15s; }
+.skill-bar-item:nth-child(4)  .skill-bar-fill { animation-delay: 0.20s; }
+.skill-bar-item:nth-child(5)  .skill-bar-fill { animation-delay: 0.25s; }
+.skill-bar-item:nth-child(6)  .skill-bar-fill { animation-delay: 0.30s; }
+.skill-bar-item:nth-child(7)  .skill-bar-fill { animation-delay: 0.35s; }
+.skill-bar-item:nth-child(8)  .skill-bar-fill { animation-delay: 0.40s; }
+.skill-bar-item:nth-child(9)  .skill-bar-fill { animation-delay: 0.45s; }
+.skill-bar-item:nth-child(10) .skill-bar-fill { animation-delay: 0.50s; }
+.skill-bar-item:nth-child(11) .skill-bar-fill { animation-delay: 0.55s; }
+.skill-bar-item:nth-child(12) .skill-bar-fill { animation-delay: 0.60s; }
+.skill-bar-item:nth-child(13) .skill-bar-fill { animation-delay: 0.65s; }
+
+@media (max-width: 700px) {
+  .skill-bars { grid-template-columns: 1fr; gap: 10px; }
+}
+</style>
 </head>
 <body>
 <canvas id="neural-canvas"></canvas>
@@ -34,182 +124,126 @@
   <div class="page-section fade-in">
     <div class="terminal-line"><span class="prompt">$</span> list --skills --verbose</div>
 
+    <!-- BUSINESS INTELLIGENCE & VISUALIZATION -->
     <div class="skills-section">
       <div class="skills-category">BUSINESS INTELLIGENCE &amp; VISUALIZATION</div>
-      <div class="skills-grid">
-        <div class="skill-chip"><span class="skill-icon">📊</span>Power BI</div>
-        <div class="skill-chip"><span class="skill-icon">⚙️</span>DAX</div>
-        <div class="skill-chip"><span class="skill-icon">🔄</span>Power Query</div>
-        <div class="skill-chip"><span class="skill-icon">🗺️</span>Azure Maps</div>
-        <div class="skill-chip"><span class="skill-icon">📈</span>Tableau</div>
-        <div class="skill-chip"><span class="skill-icon">📋</span>Excel Dashboards</div>
-        <div class="skill-chip"><span class="skill-icon">🟣</span>Plotly Dash</div>
-        <div class="skill-chip"><span class="skill-icon">📉</span>SSRS</div>
+      <div class="skill-bars">
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Power BI</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Tableau</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">DAX</span><span class="skill-bar-pct">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Plotly Dash</span><span class="skill-bar-pct">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Power Query</span><span class="skill-bar-pct">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Excel Dashboards</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Azure Maps</span><span class="skill-bar-pct">70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">SSRS</span><span class="skill-bar-pct">60%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div></div>
       </div>
     </div>
 
+    <!-- PROGRAMMING & DATA ANALYSIS -->
     <div class="skills-section">
       <div class="skills-category">PROGRAMMING &amp; DATA ANALYSIS</div>
-      <div class="skills-grid">
-        <div class="skill-chip"><span class="skill-icon">🐍</span>Python</div>
-        <div class="skill-chip"><span class="skill-icon">📊</span>R</div>
-        <div class="skill-chip"><span class="skill-icon">📐</span>SAS</div>
-        <div class="skill-chip"><span class="skill-icon">🌐</span>HTML / CSS</div>
-        <div class="skill-chip"><span class="skill-icon">⚡</span>JavaScript</div>
-        <div class="skill-chip"><span class="skill-icon">🖥️</span>PowerShell</div>
-        <div class="skill-chip"><span class="skill-icon">🐘</span>PHP</div>
-        <div class="skill-chip"><span class="skill-icon">🗄️</span>SQL</div>
+      <div class="skill-bars">
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Python</span><span class="skill-bar-pct">96%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:96%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">SQL</span><span class="skill-bar-pct">95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">R</span><span class="skill-bar-pct">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">SAS</span><span class="skill-bar-pct">55%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">HTML / CSS</span><span class="skill-bar-pct">72%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:72%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">JavaScript</span><span class="skill-bar-pct">60%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">PowerShell</span><span class="skill-bar-pct">65%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">PHP</span><span class="skill-bar-pct">45%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:45%"></div></div></div>
       </div>
     </div>
 
+    <!-- MACHINE LEARNING & AI -->
     <div class="skills-section">
       <div class="skills-category">MACHINE LEARNING &amp; AI</div>
-      <div class="skills-grid">
-        <div class="skill-chip"><span class="skill-icon">🤖</span>scikit-learn</div>
-        <div class="skill-chip"><span class="skill-icon">🔍</span>FAISS</div>
-        <div class="skill-chip"><span class="skill-icon">🔑</span>BM25</div>
-        <div class="skill-chip"><span class="skill-icon">🧠</span>XGBoost</div>
-        <div class="skill-chip"><span class="skill-icon">🌲</span>glmnet</div>
-        <div class="skill-chip"><span class="skill-icon">〰️</span>mgcv / GAM</div>
-        <div class="skill-chip"><span class="skill-icon">📐</span>lme4</div>
-        <div class="skill-chip"><span class="skill-icon">💀</span>lifelines</div>
-        <div class="skill-chip"><span class="skill-icon">⚕️</span>scikit-survival</div>
-        <div class="skill-chip"><span class="skill-icon">🔤</span>DistilBERT</div>
-        <div class="skill-chip"><span class="skill-icon">📝</span>TF-IDF</div>
+      <div class="skill-bars">
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">scikit-learn</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">XGBoost</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">FAISS</span><span class="skill-bar-pct">75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">BM25</span><span class="skill-bar-pct">75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">glmnet (Lasso / Ridge)</span><span class="skill-bar-pct">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">mgcv / GAM</span><span class="skill-bar-pct">78%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:78%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">lme4 (Mixed Models)</span><span class="skill-bar-pct">76%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:76%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">lifelines</span><span class="skill-bar-pct">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">scikit-survival</span><span class="skill-bar-pct">75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">DistilBERT</span><span class="skill-bar-pct">72%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:72%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">TF-IDF</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
       </div>
     </div>
 
+    <!-- DATABASES & DATA PLATFORMS -->
     <div class="skills-section">
       <div class="skills-category">DATABASES &amp; DATA PLATFORMS</div>
-      <div class="skills-grid">
-        <div class="skill-chip"><span class="skill-icon">🗃️</span>Microsoft SQL Server</div>
-        <div class="skill-chip"><span class="skill-icon">🔵</span>Google BigQuery</div>
-        <div class="skill-chip"><span class="skill-icon">❄️</span>Snowflake</div>
-        <div class="skill-chip"><span class="skill-icon">🐬</span>MariaDB</div>
-        <div class="skill-chip"><span class="skill-icon">🔴</span>Redis</div>
+      <div class="skill-bars">
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Microsoft SQL Server</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Snowflake</span><span class="skill-bar-pct">58%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:58%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Google BigQuery</span><span class="skill-bar-pct">60%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">MariaDB</span><span class="skill-bar-pct">65%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Redis</span><span class="skill-bar-pct">60%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div></div>
       </div>
     </div>
 
+    <!-- DATA ENGINEERING & CLOUD -->
     <div class="skills-section">
       <div class="skills-category">DATA ENGINEERING &amp; CLOUD</div>
-      <div class="skills-grid">
-        <div class="skill-chip"><span class="skill-icon">☁️</span>AWS</div>
-        <div class="skill-chip"><span class="skill-icon">📦</span>Amazon S3</div>
-        <div class="skill-chip"><span class="skill-icon">🌊</span>Kinesis</div>
-        <div class="skill-chip"><span class="skill-icon">λ</span>Lambda</div>
-        <div class="skill-chip"><span class="skill-icon">🔧</span>Terraform</div>
-        <div class="skill-chip"><span class="skill-icon">❄️</span>Snowpipe</div>
-        <div class="skill-chip"><span class="skill-icon">🔬</span>Snowpark</div>
-        <div class="skill-chip"><span class="skill-icon">🏠</span>Nextcloud</div>
+      <div class="skill-bars">
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">AWS</span><span class="skill-bar-pct">60%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Amazon S3</span><span class="skill-bar-pct">70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">AWS Kinesis</span><span class="skill-bar-pct">62%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:62%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">AWS Lambda</span><span class="skill-bar-pct">62%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:62%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Terraform</span><span class="skill-bar-pct">58%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:58%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Snowpipe</span><span class="skill-bar-pct">55%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Snowpark</span><span class="skill-bar-pct">55%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Nextcloud</span><span class="skill-bar-pct">72%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:72%"></div></div></div>
       </div>
     </div>
 
+    <!-- DEVELOPMENT & DEVOPS TOOLS -->
     <div class="skills-section">
       <div class="skills-category">DEVELOPMENT &amp; DEVOPS TOOLS</div>
-      <div class="skills-grid">
-        <div class="skill-chip"><span class="skill-icon">📓</span>Jupyter Lab</div>
-        <div class="skill-chip"><span class="skill-icon">🔬</span>RStudio</div>
-        <div class="skill-chip"><span class="skill-icon">💻</span>VS Code</div>
-        <div class="skill-chip"><span class="skill-icon">🔷</span>SAS Viya</div>
-        <div class="skill-chip"><span class="skill-icon">🐙</span>GitHub / Git</div>
-        <div class="skill-chip"><span class="skill-icon">🐧</span>Linux / Unix</div>
-        <div class="skill-chip"><span class="skill-icon">🌀</span>Google Colab</div>
-        <div class="skill-chip"><span class="skill-icon">🔒</span>Nginx</div>
-        <div class="skill-chip"><span class="skill-icon">🔗</span>Tailscale</div>
-        <div class="skill-chip"><span class="skill-icon">🟠</span>Ubuntu</div>
-        <div class="skill-chip"><span class="skill-icon">🚀</span>FastAPI</div>
-        <div class="skill-chip"><span class="skill-icon">🐳</span>Docker</div>
-        <div class="skill-chip"><span class="skill-icon">📋</span>Jira</div>
+      <div class="skill-bars">
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">FastAPI</span><span class="skill-bar-pct">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Docker</span><span class="skill-bar-pct">68%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:68%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">GitHub / Git</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Jupyter Lab</span><span class="skill-bar-pct">92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">RStudio</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">VS Code</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Linux / Unix</span><span class="skill-bar-pct">70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Nginx</span><span class="skill-bar-pct">65%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Tailscale</span><span class="skill-bar-pct">70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">SAS Viya</span><span class="skill-bar-pct">55%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Google Colab</span><span class="skill-bar-pct">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Jira</span><span class="skill-bar-pct">60%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Ubuntu</span><span class="skill-bar-pct">68%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:68%"></div></div></div>
       </div>
     </div>
 
+    <!-- GENERATIVE AI & LLM TOOLS -->
     <div class="skills-section">
       <div class="skills-category">GENERATIVE AI &amp; LLM TOOLS</div>
-      <div class="skills-grid">
-        <div class="skill-chip"><span class="skill-icon">🤖</span>OpenAI</div>
-        <div class="skill-chip"><span class="skill-icon">🧠</span>Anthropic / Claude</div>
-        <div class="skill-chip"><span class="skill-icon">✨</span>Google Gemini</div>
-        <div class="skill-chip"><span class="skill-icon">🔍</span>Perplexity AI</div>
-        <div class="skill-chip"><span class="skill-icon">📝</span>Notion AI</div>
-        <div class="skill-chip"><span class="skill-icon">⚡</span>Cursor AI</div>
+      <div class="skill-bars">
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">OpenAI</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Anthropic / Claude</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Google Gemini</span><span class="skill-bar-pct">78%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:78%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Perplexity AI</span><span class="skill-bar-pct">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Cursor AI</span><span class="skill-bar-pct">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Notion AI</span><span class="skill-bar-pct">75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div></div>
       </div>
     </div>
 
+    <!-- PRODUCTIVITY & COLLABORATION -->
     <div class="skills-section">
       <div class="skills-category">PRODUCTIVITY &amp; COLLABORATION</div>
-      <div class="skills-grid">
-        <div class="skill-chip"><span class="skill-icon">📗</span>Microsoft Office</div>
-        <div class="skill-chip"><span class="skill-icon">📊</span>Advanced Excel</div>
-        <div class="skill-chip"><span class="skill-icon">🔵</span>Google Workspace</div>
-        <div class="skill-chip"><span class="skill-icon">📋</span>R Markdown</div>
+      <div class="skill-bars">
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Microsoft Office</span><span class="skill-bar-pct">92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:92%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Advanced Excel</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Google Workspace</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">R Markdown</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
       </div>
     </div>
 
   </div>
-
-  <div class="page-section fade-in">
-    <div class="section-label">CORE PROFICIENCIES</div>
-    <h2 class="section-title">Language &amp; Tool Depth</h2>
-    <div class="proficiency-grid">
-      <div class="proficiency-item">
-        <div class="proficiency-header">
-          <span class="proficiency-name">PYTHON</span>
-          <span class="proficiency-level">EXPERT</span>
-        </div>
-        <div class="proficiency-bar"><div class="proficiency-fill" style="width:96%"></div></div>
-      </div>
-      <div class="proficiency-item">
-        <div class="proficiency-header">
-          <span class="proficiency-name">SQL</span>
-          <span class="proficiency-level">EXPERT</span>
-        </div>
-        <div class="proficiency-bar"><div class="proficiency-fill" style="width:95%"></div></div>
-      </div>
-      <div class="proficiency-item">
-        <div class="proficiency-header">
-          <span class="proficiency-name">R</span>
-          <span class="proficiency-level">ADVANCED</span>
-        </div>
-        <div class="proficiency-bar"><div class="proficiency-fill" style="width:82%"></div></div>
-      </div>
-      <div class="proficiency-item">
-        <div class="proficiency-header">
-          <span class="proficiency-name">POWER BI / TABLEAU</span>
-          <span class="proficiency-level">ADVANCED</span>
-        </div>
-        <div class="proficiency-bar"><div class="proficiency-fill" style="width:80%"></div></div>
-      </div>
-      <div class="proficiency-item">
-        <div class="proficiency-header">
-          <span class="proficiency-name">AWS</span>
-          <span class="proficiency-level">INTERMEDIATE</span>
-        </div>
-        <div class="proficiency-bar"><div class="proficiency-fill" style="width:60%"></div></div>
-      </div>
-      <div class="proficiency-item">
-        <div class="proficiency-header">
-          <span class="proficiency-name">SNOWFLAKE</span>
-          <span class="proficiency-level">INTERMEDIATE</span>
-        </div>
-        <div class="proficiency-bar"><div class="proficiency-fill" style="width:58%"></div></div>
-      </div>
-      <div class="proficiency-item">
-        <div class="proficiency-header">
-          <span class="proficiency-name">MACHINE LEARNING</span>
-          <span class="proficiency-level">ADVANCED</span>
-        </div>
-        <div class="proficiency-bar"><div class="proficiency-fill" style="width:84%"></div></div>
-      </div>
-      <div class="proficiency-item">
-        <div class="proficiency-header">
-          <span class="proficiency-name">SAS</span>
-          <span class="proficiency-level">INTERMEDIATE</span>
-        </div>
-        <div class="proficiency-bar"><div class="proficiency-fill" style="width:55%"></div></div>
-      </div>
-    </div>
-  </div>
-
 </main>
 
 <footer>
