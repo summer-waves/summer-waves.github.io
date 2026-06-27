@@ -63,6 +63,27 @@
 @media (max-width: 900px) {
   .connect-layout { grid-template-columns: 1fr; }
 }
+.profile-pic-container {
+  width: 100%;
+  max-width: 400px; 
+  height: 300px;    
+  margin-top: 32px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  overflow: hidden; 
+  position: relative;
+}
+.profile-pic-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center; 
+  filter: grayscale(20%);  
+  transition: filter 0.3s ease;
+}
+.profile-pic-container:hover img {
+  filter: grayscale(0%); 
+}
 </style>
 </head>
 <body>
@@ -148,6 +169,13 @@
             <span class="sc-arrow">→</span>
           </a>
         </div>
+      
+      </div> <div class="profile-pic-container">
+        <img src="my-profile.png" alt="Marco Ortiz">
+      </div>
+      
+      <div style="margin-top: 32px;">
+        <span class="section-label" style="margin-bottom:16px;display:block">Quick Actions</span>
 
         <div style="margin-top: 32px;">
           <span class="section-label" style="margin-bottom:16px;display:block">Quick Actions</span>
